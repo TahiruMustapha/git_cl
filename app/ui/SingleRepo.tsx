@@ -1,6 +1,9 @@
 import React from "react";
+const SingleRepo = ({ singleRepoDetails, commitData }: any) => {
+  const newCommitData = { ...commitData };
+  const { commit } = newCommitData;
+  console.log(commit);
 
-const SingleRepo = ({ singleRepoDetails,commitData }: any) => {
   return (
     <div>
       <table className=" table-auto mt-8 w-full  border-collapse border border-slate-400">
@@ -13,12 +16,18 @@ const SingleRepo = ({ singleRepoDetails,commitData }: any) => {
           </tr>
         </thead>
         <tbody>
-            <tr className=" bg-white  my-1 px-1 py-1 border-b-gray-500 border-[1px] text-center  ">
-                <td className=" p-3  ">{singleRepoDetails.name}</td>
-                <td>{singleRepoDetails.message}</td>
-                <td>{singleRepoDetails.name}</td>
-                <td>{singleRepoDetails.description}</td>
-            </tr>
+          <tr className=" bg-white  my-1 px-1 py-1 border-b-gray-500 border-[1px] text-center  ">
+            <td className=" p-3  ">{singleRepoDetails.name}</td>
+            <td>{singleRepoDetails.message}</td>
+            <td>{singleRepoDetails.name}</td>
+            <td>
+              {singleRepoDetails.description ? (
+                singleRepoDetails.description
+              ) : (
+                <span>...</span>
+              )}
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
