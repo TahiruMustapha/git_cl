@@ -2,7 +2,7 @@ import React from "react";
 const SingleRepo = ({ singleRepoDetails, commitData }: any) => {
   const newCommitData = { ...commitData };
   const { commit } = newCommitData;
-  console.log(commit);
+  // console.log(commit);
 
   return (
     <div>

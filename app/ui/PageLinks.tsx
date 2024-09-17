@@ -7,8 +7,9 @@ import { GoPackage, GoProjectSymlink } from "react-icons/go";
 import { IoBookOutline } from "react-icons/io5";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { RiGitRepositoryLine } from "react-icons/ri";
-import { repos } from "../lib/helper";
+import { repos, users } from "../lib/helper";
 import Link from "next/link";
+import { Span } from "next/dist/trace";
 const PageLinks = () => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -16,6 +17,18 @@ const PageLinks = () => {
   const userName = session?.user?.name?.replace(" ", "");
   const pathName = usePathname();
   // const repositories: any =  repos(userName);
+  const [reps, setReps]:any = useState({});
+
+  useEffect(() => {
+    const getReps = async () => {
+      const repositories: any = await users(userName);
+      if (repositories) {
+        setReps(repositories);
+      }
+    };
+    getReps();
+  }, [userName]);
+  // console.log(reps.public_repos,"Lenght");
   return (
     <div className=" mt-5  ">
       <ul className=" px-8 flex items-center  gap-4">
@@ -37,10 +50,10 @@ const PageLinks = () => {
         >
           <RiGitRepositoryLine />{" "}
           <span className={`text-sm font-normal`}>Repositories</span>
-          <span className=" text-xs bg-gray-300 px-1  rounded-md">32</span>
+          <span className=" text-xs bg-gray-300 px-1  rounded-md">{reps.public_repos}</span>
         </Link>
         <Link
-          href={`/projects/${userName}`}
+          href={`/projects`}
           onClick={() => router.push(`/projects`)}
           className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
             " border-[#FF8343] border-b-[2px]": pathName === "/projects",

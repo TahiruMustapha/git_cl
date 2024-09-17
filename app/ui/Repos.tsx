@@ -1,5 +1,6 @@
 import { timeAgo } from "@/app/lib/helper";
 import UserDetails from "@/app/ui/UserDetails";
+import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 import { FaCaretDown } from "react-icons/fa";
@@ -33,7 +34,10 @@ const Repos = ({ repositories, user }: any) => {
           {repositories.map((repos: any) => (
             <div className=" flex  flex-col gap-4 mt-4" key={repos.id}>
               <p className=" flex items-center gap-4">
-                <Link href={`/repositories/${repos.name}`} className=" text-xl cursor-pointer text-blue-600 font-semibold">
+                <Link
+                  href={`/repositories/${repos.name}`}
+                  className=" text-xl cursor-pointer text-blue-600 font-semibold"
+                >
                   {repos.name}
                 </Link>
                 <span className=" text-xs border-gray-200 border-[1px] px-2 py-[1px] rounded-xl">
@@ -43,14 +47,18 @@ const Repos = ({ repositories, user }: any) => {
               <div className=" flex items-center gap-10 ">
                 <p className=" ">
                   <span
-                    className={`${
-                      repos.language === "TypeScript"
-                        ? ` bg-green-700 text-xs  text-green-700 mr-1 rounded-full`
-                        : ` bg-yellow-700 text-xs  text-yellow-700 mr-1 rounded-full`
-                    } `}
-                  >
-                    nh
-                  </span>
+                    className={clsx(
+                      " text-xs inline-block h-3 w-3   mr-1 rounded-full",
+                      {
+                        " bg-yellow-300": repos.language === "TypeScript",
+                        " bg-blue-700": repos.language === "JavaScript",
+                        " bg-violet-900": repos.language === "CSS",
+                        "bg-red-600": repos.language === "HTML",
+                        "bg-[#ED3EF7]": repos.language === "SCSS",
+                        "bg-[#173B45]": repos.language === "Hack",
+                      }
+                    )}
+                  ></span>
                   <span className=" text-xs"> {repos.language}</span>
                 </p>
                 <span className=" text-xs"> {timeAgo(repos.pushed_at)}</span>
