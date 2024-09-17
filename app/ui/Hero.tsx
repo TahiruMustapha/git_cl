@@ -14,7 +14,7 @@ const Hero = () => {
             more.
           </p>
           <button
-            onClick={() => signIn("github",{ callbackUrl: "/overview" })}
+            onClick={() => signIn("github",{ callbackUrl: "/user" })}
             className=" border-white border-[1px] font-light px-3 py-1 mt-4 rounded-md ext-sm flex items-center gap-2"
           >
             Login <FaGithub />

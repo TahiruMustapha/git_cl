@@ -20,14 +20,16 @@ const PageLinks = () => {
     <div className=" mt-5  ">
       <ul className=" px-8 flex items-center  gap-4">
         <li
-         onClick={() => router.push(`/overview`)}
-         className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
-          " border-[#FF8343] border-b-[2px]": pathName === "/overview",
-        })}`}>
+          onClick={() => router.push(`/overview`)}
+          className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
+            " border-[#FF8343] border-b-[2px]": pathName === "/overview",
+          })}`}
+        >
           <IoBookOutline />{" "}
           <span className=" text-sm font-normal">Overview</span>
         </li>
-        <Link href={`/repositories`}
+        <Link
+          href={`/repositories`}
           // onClick={() => router.push(`/repositories`)}
           className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
             " border-[#FF8343] border-b-[2px]": pathName === "/repositories",
@@ -37,7 +39,8 @@ const PageLinks = () => {
           <span className={`text-sm font-normal`}>Repositories</span>
           <span className=" text-xs bg-gray-300 px-1  rounded-md">32</span>
         </Link>
-        <li
+        <Link
+          href={`/projects/${userName}`}
           onClick={() => router.push(`/projects`)}
           className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
             " border-[#FF8343] border-b-[2px]": pathName === "/projects",
@@ -45,7 +48,7 @@ const PageLinks = () => {
         >
           <GoProjectSymlink />
           <span className=" text-sm font-normal">Projects</span>
-        </li>
+        </Link>
         <li className=" flex cursor-pointer pb-4 items-center gap-2">
           <GoPackage />
           <span className=" text-sm font-normal">Packages</span>
