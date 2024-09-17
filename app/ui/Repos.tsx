@@ -6,9 +6,9 @@ import { FaCaretDown } from "react-icons/fa";
 import { RiGitRepositoryLine } from "react-icons/ri";
 const Repos = ({ repositories, user }: any) => {
   return (
-    <div className=" px-[6.5rem] mt-10 flex gap-4 w-full h-screen overflow-hidden  ">
+    <div className=" px-[6rem] mt-10 flex gap-4 w-full h-screen   ">
       <UserDetails userData={user} />
-      <div className=" flex-1">
+      <div className=" w-[70%]">
         <div className=" mb-4 flex items-center gap-4 ">
           <input
             className=" border-gray-400 outline-none w-[35rem] rounded-md px-2 py-1 border-[1px]"
