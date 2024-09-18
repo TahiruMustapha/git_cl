@@ -8,11 +8,6 @@ const Hero = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const userName = session?.user?.name?.replace(" ", "");
-  useEffect(() => {
-    if (session?.user?.name) {
-      router.push(`/${userName}/overview`);
-    }
-  }, [userName, session, router]);
   return (
     <div className=" relative bg-[url('https://images.pexels.com/photos/1181325/pexels-photo-1181325.jpeg?auto=compress&cs=tinysrgb&w=600')] bg-cover bg-center  p-0 m-0 box-border  h-full  ">
       <div className="absolute inset-0 backdrop-blur-sm bg-black/30"></div>
@@ -24,7 +19,7 @@ const Hero = () => {
             more.
           </p>
           <button
-            onClick={() => signIn("github")}
+            onClick={() => signIn("github",{callbackUrl:"/overview"})}
             className=" border-white border-[1px] font-light px-3 py-1 mt-4 rounded-md ext-sm flex items-center gap-2"
           >
             Login <FaGithub />

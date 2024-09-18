@@ -28,6 +28,12 @@ const PageLinks = () => {
     };
     getReps();
   }, [userName]);
+
+  // useEffect(() => {
+  //   if (session?.user?.name) {
+  //     router.push(`/${userName}`);
+  //   }
+  // }, [userName, session, router]);
   // console.log(reps.public_repos,"Lenght");
   return (
     <div className=" mt-5  ">
@@ -35,15 +41,15 @@ const PageLinks = () => {
         <li
           onClick={() => router.push(`/overview`)}
           className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
-            " border-[#FF8343] border-b-[2px]": pathName === "/overview",
+            " border-[#FF8343] border-b-[2px]": pathName === `/overview`,
           })}`}
         >
           <IoBookOutline />{" "}
           <span className=" text-sm font-normal">Overview</span>
         </li>
-        <Link
-          href={`/repositories`}
-          // onClick={() => router.push(`/repositories`)}
+        <li
+          // href={`/repositories`}
+          onClick={() => router.push(`/repositories`)}
           className={`${clsx(`flex cursor-pointer pb-4 items-center gap-2`, {
             " border-[#FF8343] border-b-[2px]": pathName === "/repositories",
           })} `}
@@ -51,7 +57,7 @@ const PageLinks = () => {
           <RiGitRepositoryLine />{" "}
           <span className={`text-sm font-normal`}>Repositories</span>
           <span className=" text-xs bg-gray-300 px-1  rounded-md">{reps.public_repos}</span>
-        </Link>
+        </li>
         <Link
           href={`/projects`}
           onClick={() => router.push(`/projects`)}
