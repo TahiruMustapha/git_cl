@@ -3,13 +3,13 @@ import UserDetails from "@/app/ui/UserDetails";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { RiGitRepositoryLine } from "react-icons/ri";
 const Repos = ({ repositories, user }: any) => {
   return (
     <div className=" px-[6rem] mt-10 flex gap-4 w-full h-screen   ">
       <UserDetails userData={user} />
-      <div className=" w-[70%]">
+      <div className=" w-[70%]  ">
         <div className=" mb-4 flex items-center gap-4 ">
           <input
             className=" border-gray-400 outline-none w-[35rem] rounded-md px-2 py-1 border-[1px]"
@@ -67,7 +67,20 @@ const Repos = ({ repositories, user }: any) => {
             </div>
           ))}
         </div>
+        <div className=" w-full  mt-1 mb-1 py-2 rounded-sm ">
+            <div className=" flex items-center gap-4 justify-center">
+              <span className=" border-gray-400 text-gray-400 border-[2px] px-2 py-2 rounded-md "><FaChevronLeft /></span>
+              <div className=" flex items-center gap-3">
+                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">1</button>
+                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">2</button>
+                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">3</button>
+                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">4</button>
+              </div>
+              <span className="  border-gray-400 text-gray-400 border-[2px] px-2 py-2 rounded-md "><FaChevronRight/></span>
+            </div>
+        </div>
       </div>
+    
     </div>
   );
 };

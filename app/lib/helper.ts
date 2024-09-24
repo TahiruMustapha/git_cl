@@ -32,3 +32,23 @@ export const timeAgo = (dateString: any) => {
 
   return `Updated ${daysAgo} days ago`;
 };
+
+export const formatTimeAndDate = function (dateString:Date) {
+  const date = new Date(dateString);
+  const options:any = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString('en-US', options);
+
+
+  // Get parts of the time
+  let hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+  const seconds = date.getUTCSeconds();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    // Convert hours to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0 should be converted to 12
+
+    const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
+    return `${formattedDate}, ${formattedTime}`;
+};
