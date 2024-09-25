@@ -1,37 +1,27 @@
+"use client";
 import { timeAgo } from "@/app/lib/helper";
 import UserDetails from "@/app/ui/UserDetails";
 import clsx from "clsx";
 import Link from "next/link";
-import React from "react";
-import { FaCaretDown, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { RiGitRepositoryLine } from "react-icons/ri";
-const Repos = ({ repositories, user }: any) => {
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Search from "./Search";
+import { Pagination } from "@/components/ui/pagination";
+import PaginationCom from "./PaginationCom";
+// import Pagination from "./Pagination";
+const Repos = ({ repositories, user, query }: any) => {
+  const PER_PAGE = 5; // Number of repos per page
+  const filteredRepos = repositories.filter((repo: any) =>
+    repo.name.toLowerCase().includes(query.toLowerCase())
+  );
+  // console.log(currentPage);
   return (
     <div className=" px-[6rem] mt-10 flex gap-4 w-full h-screen   ">
       <UserDetails userData={user} />
       <div className=" w-[70%]  ">
-        <div className=" mb-4 flex items-center gap-4 ">
-          <input
-            className=" border-gray-400 outline-none w-[35rem] rounded-md px-2 py-1 border-[1px]"
-            type="text"
-            placeholder=" Find a repository..."
-          />
-          <p className=" border-gray-400 rounded-md px-2 py-1 border-[1px] font-semibold flex items-center gap-2">
-            Type <FaCaretDown />
-          </p>
-          <p className=" border-gray-400 rounded-md px-2 py-1 border-[1px] font-semibold flex items-center gap-2">
-            Language <FaCaretDown />
-          </p>
-          <p className=" border-gray-400 rounded-md px-2 py-1 border-[1px] font-semibold flex items-center gap-2">
-            Sort <FaCaretDown />
-          </p>
-          <p className=" bg-[#1A5D1A] px-3 py-1  text-white rounded-md font-semibold flex items-center gap-1">
-            <RiGitRepositoryLine /> New
-          </p>
-        </div>
+        <Search />
         <hr />
         <div>
-          {repositories.map((repos: any) => (
+          {filteredRepos.map((repos: any) => (
             <div className=" flex  flex-col gap-4 mt-4" key={repos.id}>
               <p className=" flex items-center gap-4">
                 <Link
@@ -67,20 +57,32 @@ const Repos = ({ repositories, user }: any) => {
             </div>
           ))}
         </div>
-        <div className=" w-full  mt-1 mb-1 py-2 rounded-sm ">
-            <div className=" flex items-center gap-4 justify-center">
-              <span className=" border-gray-400 text-gray-400 border-[2px] px-2 py-2 rounded-md "><FaChevronLeft /></span>
-              <div className=" flex items-center gap-3">
-                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">1</button>
-                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">2</button>
-                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">3</button>
-                <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">4</button>
-              </div>
-              <span className="  border-gray-400 text-gray-400 border-[2px] px-2 py-2 rounded-md "><FaChevronRight/></span>
+        {/* <div className=" w-full  mt-1 mb-1 py-2 rounded-sm ">
+          <div className=" flex items-center gap-4 justify-center">
+            <span className=" border-gray-400 text-gray-400 border-[2px] px-2 py-2 rounded-md ">
+              <FaChevronLeft />
+            </span>
+            <div className=" flex items-center gap-3">
+              <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">
+                1
+              </button>
+              <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">
+                2
+              </button>
+              <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">
+                3
+              </button>
+              <button className=" border-gray-400 text-gray-400 border-[2px] px-3 py-1 rounded-md ">
+                4
+              </button>
             </div>
-        </div>
+            <span className="  border-gray-400 text-gray-400 border-[2px] px-2 py-2 rounded-md ">
+              <FaChevronRight />
+            </span>
+          </div>
+        </div> */}
+        <PaginationCom/>
       </div>
-    
     </div>
   );
 };
