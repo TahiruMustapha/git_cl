@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../app/ui/globals.css";
 import SessionWrapper from "@/app/ui/SessionWrapper";
 import Header from "@/app/ui/Header";
+import { AuthProvider } from "@/context/AuthContext";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "git_cl",
@@ -14,13 +15,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionWrapper>
-      <html lang="en">
-        <body className={`${inter.className} antialiased`}>
-          <Header />
-          {children}
-        </body>
-      </html>
-    </SessionWrapper>
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>
+        <SessionWrapper>
+          <AuthProvider>
+            <Header />
+            {children}
+          </AuthProvider>
+        </SessionWrapper>
+      </body>
+    </html>
   );
 }

@@ -1,8 +1,10 @@
-import Hero from "@/app/ui/Hero";
+import LayoutComponent from "./ui/LayoutComponent";
+
 export default function Home() {
   return (
-    <main className=" h-screen overflow-hidden">
-      <Hero />
-    </main>
+    
+      <main className=" h-full">
+    <LayoutComponent/>
+      </main>
   );
 }
