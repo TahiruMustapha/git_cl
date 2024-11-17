@@ -3,10 +3,11 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useContext } from "react";
-import { CiMenuBurger } from "react-icons/ci";
+
 import HeaderSearch from "./HeaderSearch";
 import PageLinks from "./PageLinks";
 import { useAuth } from "@/context/AuthContext";
+import { CiMenuBurger } from "react-icons/ci";
 
 const Header = () => {
   const { loggedIn } = useAuth();
