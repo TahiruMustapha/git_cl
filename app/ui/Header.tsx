@@ -9,6 +9,8 @@ import PageLinks from "./PageLinks";
 import { useAuth } from "@/context/AuthContext";
 import { CiMenuBurger } from "react-icons/ci";
 
+
+
 const Header = () => {
   const { loggedIn } = useAuth();
   const { data: session } = useSession();
@@ -20,7 +22,7 @@ const Header = () => {
           <div className="py-4 px-6 text-black w-full flex items-center justify-between">
             <div className="flex items-center text-gray-500">
               <span className="cursor-pointer border-gray-300 mr-5 border-[1px] px-2 py-2 rounded-md">
-                <CiMenuBurger />
+                <CiMenuBurger/>
               </span>
               <p className="cursor-pointer">
                 nab{" "}

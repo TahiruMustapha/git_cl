@@ -18,7 +18,7 @@ const HeaderSearch = () => {
       <span className=" text-gray-300">|</span>
       <div className=" flex items-center gap-3">
         <p className=" flex items-center gap-2 border-gray-300 border-[1px] px-2 py-2 rounded-md cursor-pointer "><FiPlus /> <FaCaretDown /></p>
-        <p className="border-gray-300 border-[1px] px-2 py-2 rounded-md cursor-pointer"><GoIssueOpened  /></p>
+        <p className="border-gray-300 border-[1px] px-2 py-2 rounded-md cursor-pointer"><GoIssueOpened/></p>
         <p className="border-gray-300 border-[1px] px-2 py-2 rounded-md cursor-pointer"><IoGitPullRequestOutline /></p>
         <p className="border-gray-300 border-[1px] px-2 py-2 rounded-md cursor-pointer"><TiMessages /></p>
       </div>
